@@ -1,4 +1,3 @@
-
 """
 BrightPath Online Coaching - Fee Calculator Website
 ===================================================
@@ -157,23 +156,35 @@ st.markdown(
     .block-container { padding-top: 1rem; max-width: 1180px; }
 
     /* top brand bar */
-    .brandbar { display:flex; align-items:center; gap:10px; padding:.4rem 0 .2rem 0; }
+    .brandbar { display:flex; align-items:center; gap:10px; padding:.4rem 0 0 0; margin-bottom:1rem; }
     .logo { width:34px; height:34px; border-radius:9px; background:var(--brand); color:#fff;
             display:grid; place-items:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; }
     .brandname { font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:1.25rem; color:var(--brand); }
 
-    /* navigation tabs look like the pill menu of the preview */
-    .stTabs [data-baseweb="tab-list"] { gap:4px; border-bottom:1px solid var(--line); padding-bottom:10px; flex-wrap:wrap; }
-    .stTabs [data-baseweb="tab"] { height:auto; padding:8px 14px; border-radius:8px; color:var(--muted);
-                                   font-weight:500; background:transparent; }
-    .stTabs [data-baseweb="tab"]:hover { background:var(--tint); color:var(--ink); }
-    .stTabs [aria-selected="true"] { background:var(--brand) !important; color:#fff !important; }
-    .stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] { display:none; }
+    /* navigation menu: pill buttons (!important is needed to beat Streamlit's own tab styles) */
+    .stTabs [data-baseweb="tab-list"] { gap:8px !important; padding:0 0 14px 0 !important; background:transparent !important;
+                                        border-bottom:1px solid var(--line); flex-wrap:wrap; }
+    .stTabs button[role="tab"] { height:auto !important; padding:10px 20px !important; margin:0 !important;
+                                 border-radius:10px !important; background:transparent !important;
+                                 border:1px solid transparent !important; }
+    .stTabs button[role="tab"] p, .stTabs button[role="tab"] div { margin:0 !important; padding:0 !important;
+                                 font-size:1rem !important; font-weight:500 !important; color:var(--muted) !important; }
+    .stTabs button[role="tab"]:hover { background:var(--tint) !important; }
+    .stTabs button[role="tab"]:hover p { color:var(--ink) !important; }
+    .stTabs button[role="tab"][aria-selected="true"] { background:var(--brand) !important; }
+    .stTabs button[role="tab"][aria-selected="true"] p,
+    .stTabs button[role="tab"][aria-selected="true"] div { color:#ffffff !important; font-weight:700 !important; }
+    .stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] {
+        display:none !important; height:0 !important; background:transparent !important; }
+    .stTabs [data-baseweb="tab-panel"] { padding-top:1.2rem !important; }
+
+    /* Streamlit adds big padding above headings: remove it inside our own HTML blocks */
+    .hero h1, .ticket h4, .card h4 { padding:0 !important; }
 
     /* hero */
     .eyebrow { font-family:'DM Mono',monospace; font-size:.78rem; text-transform:uppercase;
                letter-spacing:.12em; color:var(--brand); }
-    .hero h1 { font-size:clamp(2.1rem,4.6vw,3.4rem); font-weight:800; line-height:1.1; margin:.6rem 0 .9rem 0; }
+    .hero h1 { font-size:clamp(2rem,4vw,3rem); font-weight:800; line-height:1.12; margin:.6rem 0 .9rem 0; }
     .hero h1 em { font-style:normal; color:var(--brand);
                   background:linear-gradient(transparent 62%, rgba(240,162,2,.5) 62%); }
     .hero p.lead { color:var(--muted); max-width:60ch; }
